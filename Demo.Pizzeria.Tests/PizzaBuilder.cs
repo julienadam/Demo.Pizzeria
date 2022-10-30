@@ -8,11 +8,7 @@ namespace Demo.Pizzeria.Tests
         private PizzaSize size;
         private PizzaBase pizzaBase;
         private readonly List<Ingredient> ingredients = new();
-
-        public static PizzaBuilder CreateSmallPizza()
-        {
-            return new PizzaBuilder().WithSize(PizzaSize.Small);
-        }
+        public Pizza Pizza => new Pizza(size, pizzaBase, ingredients);
 
         public PizzaBuilder WithSize(PizzaSize size)
         {
@@ -26,6 +22,22 @@ namespace Demo.Pizzeria.Tests
             return this;
         }
 
+        public static PizzaBuilder CreateSmallPizza()
+        {
+            return new PizzaBuilder().WithSize(PizzaSize.Small);
+        }
+
+
+        public static PizzaBuilder CreateLargePizza()
+        {
+            return new PizzaBuilder().WithSize(PizzaSize.Large);
+        }
+
+        public PizzaBuilder WithTomatoBase()
+        {
+            return this.WithBase(PizzaBase.Tomato);
+        }
+
         public PizzaBuilder WithPepperoni()
         {
             this.ingredients.Add(new Ingredient("Pepperoni", 0.8m));
@@ -36,19 +48,6 @@ namespace Demo.Pizzeria.Tests
         {
             this.ingredients.Add(new Ingredient("Mushrooms", 0.3m));
             return this;
-        }
-
-        public PizzaBuilder WithTomatoBase()
-        {
-            this.pizzaBase = PizzaBase.Tomato;
-            return this;
-        }
-
-        public Pizza Pizza => new Pizza(size, pizzaBase, ingredients);
-
-        public static PizzaBuilder CreateLargePizza()
-        {
-            return new PizzaBuilder().WithSize(PizzaSize.Large);
         }
     }
 }
