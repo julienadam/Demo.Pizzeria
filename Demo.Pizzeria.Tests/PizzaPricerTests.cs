@@ -35,5 +35,18 @@ namespace Demo.Pizzeria.Tests
             var price = pricer.CalculatePrice(pizzaBuilder.Pizza);
             Assert.Equal(7.1m, price);
         }
+
+        [Fact]
+        public void Large_pepperoni_on_tomato_base_is_priced_correctly_with_builder()
+        {
+            var pricer = new PizzaPricer(6, 7, 8, 0.5m);
+            var pizzaBuilder = PizzaBuilder
+                .CreateLargePizza()
+                .WithTomatoBase()
+                .WithPepperoni()
+                .WithMushrooms();
+            var price = pricer.CalculatePrice(pizzaBuilder.Pizza);
+            Assert.Equal(9.1m, price);
+        }
     }
 }

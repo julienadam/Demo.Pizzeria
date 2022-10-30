@@ -44,9 +44,11 @@ namespace Demo.Pizzeria.Tests
             return this;
         }
 
-        public Pizza Pizza
+        public Pizza Pizza => new Pizza(size, pizzaBase, ingredients);
+
+        public static PizzaBuilder CreateLargePizza()
         {
-            get { return new Pizza(size, pizzaBase, ingredients); }
+            return new PizzaBuilder().WithSize(PizzaSize.Large);
         }
     }
 }
