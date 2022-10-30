@@ -4,7 +4,6 @@ using System.Linq;
 
 namespace Demo.Pizzeria.Domain
 {
-
     public class Ingredient
     {
         public string Name { get; }
